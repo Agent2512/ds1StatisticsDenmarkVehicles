@@ -1,3 +1,3 @@
 # Statistics Denmark Vehicles
 
-shows the of registered vehicles in Denmark
+shows the of number registered vehicles in Denmark
