@@ -1,0 +1,57 @@
+/* page */
+#index {
+    width: 80%;
+    height: 100%;
+
+    margin: auto;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr 8fr;
+}
+/* header */
+#index > header {
+    border: 1px solid #000;
+    border-top: 0;
+}
+#index > header > h1 {
+    text-align: center;
+}
+/* form */
+#index > form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 15%;
+}
+#index > form > .formGroup {
+    width: 70%;
+    margin: auto;
+}
+#index > form > .formGroup > label {
+    text-align: center;
+}
+#index > form > button {
+    grid-column: 2;
+}
+/* table */
+#index > .table {
+    height: 100%;
+    width: 100%;
+
+    margin: 0 auto;
+
+    border: 1px solid #000;
+    border-bottom: 0;
+
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 60px);
+}
+#index > .table > .row{
+    width: 100%;
+    display: grid;
+}
+#index > .table > .row > p{
+    text-align: center;
+}
