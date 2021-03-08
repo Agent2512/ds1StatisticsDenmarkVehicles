@@ -1,3 +1,5 @@
+/* imports */
+@import url("./styles/index.css");
 /* globals */
 body, #__next {
     margin: 0;
