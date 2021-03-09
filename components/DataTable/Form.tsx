@@ -6,10 +6,10 @@ interface Props {
 }
 
 export default function Form(props: Props) {
-    
+    // makes all yearElementOptions
     const yearElement = (() => {
         let element: JSX.Element[] = [];
-
+        // runs 10 years back
         for (let i = 0; i < 10; i++) {
             const value = new Date().getFullYear() - i;
             element.push(<option value={value} >{value}</option>);
@@ -17,17 +17,24 @@ export default function Form(props: Props) {
         return element
     })();
 
+    // makes all monthElementOptions
     const monthElement = (() => {
         let element: JSX.Element[] = [];
         const date = new Date();
 
+        // if selected year same as current year
+        // elseIf selected year not empty
         if (props.year == date.getFullYear().toString()) {
+
             for (let i = 1; i <= date.getMonth() - 1; i++) {
-                element.push(<option value={`m${i.toLocaleString('en-US', { minimumIntegerDigits: 2 })}`} >{i}</option>);
+                const value = i.toLocaleString('en-US', { minimumIntegerDigits: 2 });
+                element.push(<option value={`m${value}`} >{i}</option>);
             }
         } else if (props.year != "") {
+
             for (let i = 1; i <= 12; i++) {
-                element.push(<option value={`m${i.toLocaleString('en-US', { minimumIntegerDigits: 2 })}`} >{i}</option>);
+                const value = i.toLocaleString('en-US', { minimumIntegerDigits: 2 });
+                element.push(<option value={`m${value}`} >{i}</option>);
             }
         }
 
