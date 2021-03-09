@@ -34,15 +34,22 @@ export default function Table(props: Props) {
     useEffect(() => {
         if (props.carTypes && props.month && props.year) {
             // get data form api and sets state
-            getData(payLoad)
+            getData(payLoad).then(json => setData(json))
         }
     }, [props.carTypes, props.month, props.year])
 
     // Elements is the array to be showed on the page
     const Elements: JSX.Element[] = [];
 
+    // check if error
+    if (data?.errorTypeCode && props.carTypes && props.month && props.year) {
+        // adds a element to top row on page 
+        Elements.push(<div className="row">
+            <p>no data jet</p>
+        </div>);
+    }
     // if api returns a dataset then make elements
-    if (data != undefined && props.carTypes && props.month && props.year) {
+    else if (data != undefined && props.carTypes && props.month && props.year) {
         // gets initials values from api
         const values: number[] = data.dataset.value;
         const carTypes = data.dataset.dimension.BILTYPE.category.label;
@@ -63,7 +70,8 @@ export default function Table(props: Props) {
 
         let yearMonthElement: JSX.Element[] = [];
         Object.keys(yearMonth).forEach(i => {
-            yearMonthElement.push(<p>{yearMonth[i]}</p>)
+            const date:string = yearMonth[i].replace("M","/")
+            yearMonthElement.push(<p>{date}</p>)
         })
 
         let valuesElement: JSX.Element[] = [];
@@ -97,7 +105,7 @@ export default function Table(props: Props) {
     
     // gets data from api with payload
     function getData(payLoad: object) {
-        fetch('https://api.statbank.dk/v1/data', {
+        return fetch('https://api.statbank.dk/v1/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -105,6 +113,5 @@ export default function Table(props: Props) {
             body: JSON.stringify(payLoad),
         })
             .then(res => res.json())
-            .then(json => setData(json))
     }
 }
