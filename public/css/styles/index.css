@@ -51,7 +51,8 @@
 #index > .table > .row{
     width: 100%;
     display: grid;
+    grid-template-columns: 1fr;
 }
-#index > .table > .row > p{
+#index > .table > .row > p {
     text-align: center;
 }
