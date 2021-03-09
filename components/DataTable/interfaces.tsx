@@ -1,5 +1,6 @@
 export interface IStatbank {
     dataset: Dataset;
+    errorTypeCode?: string;
 }
 export interface Dataset {
     dimension: Dimension;
