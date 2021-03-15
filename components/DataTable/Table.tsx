@@ -57,13 +57,6 @@ export default function Table(props: Props) {
         const carTypes = data.dataset.dimension.BILTYPE.category.label;
         const yearMonth = data.dataset.dimension.Tid.category.label;
 
-        // some jsCss if multiple columns  
-        const style = {
-            row: {
-                gridTemplateColumns: `repeat(${Object.keys(carTypes).length + 1}, 1fr)`
-            }
-        }
-
         // converts values into elements
         let carTypesElement: JSX.Element[] = [<p></p>];
         Object.keys(carTypes).forEach(i => {
