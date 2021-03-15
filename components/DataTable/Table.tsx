@@ -44,9 +44,11 @@ export default function Table(props: Props) {
     // check if error
     if (data?.errorTypeCode && props.carTypes && props.month && props.year) {
         // adds a element to top row on page 
-        Elements.push(<div className="row">
-            <p>no data jet</p>
+        Elements.push(<div className="row" key="error">
+            <p key="rowTitle">resultat</p>
+            <p className="bigBorder" >no data jet</p>
         </div>);
+        
     }
     // if api returns a dataset then make elements
     else if (data != undefined && props.carTypes && props.month && props.year) {
@@ -76,15 +78,15 @@ export default function Table(props: Props) {
 
         let valuesElement: JSX.Element[] = [];
         values.forEach(i => {
-            valuesElement.push(<p >{i}</p>)
+            valuesElement.push(<p className="bigBorder" key={i} >{i}</p>)
         })
 
         // adds a element to top row on page 
-        Elements.push(<div style={style.row} className="row">{carTypesElement}</div>);
+        // Elements.push(<div style={style.row} className="row">{carTypesElement}</div>);
 
         // makes all data rows 
         for (let i = 0; i < yearMonthElement.length; i++) {
-            let dataRow: JSX.Element[] = [yearMonthElement[i]];
+            let dataRow: JSX.Element[] = [];
             const yearMonthLen = yearMonthElement.length
 
             // makes each column and adds to dataRow
@@ -93,12 +95,15 @@ export default function Table(props: Props) {
             }
 
             // adds dataRows to Elements 
-            Elements.push(<div style={style.row} className="row">{dataRow}</div>);
+            Elements.push(<div className="row" key={`row${i}`}>
+                <p key="rowTitle">resultat</p>
+                {dataRow}
+            </div>);
         }
     };
     
     return (
-        <div className="table" >
+        <div className="Table" key="Table">
             {Elements}
         </div>
     )
