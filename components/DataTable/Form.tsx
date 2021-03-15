@@ -20,7 +20,6 @@ export default function Form(props: Props) {
     // makes all monthElementOptions
     const monthElement = (() => {
         let element: JSX.Element[] = [];
-        const date = new Date();
 
         // if selected year you can a month
         if (props.year != "") {
