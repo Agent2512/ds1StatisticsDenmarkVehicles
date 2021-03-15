@@ -22,15 +22,8 @@ export default function Form(props: Props) {
         let element: JSX.Element[] = [];
         const date = new Date();
 
-        // if selected year same as current year
-        // elseIf selected year not empty
-        if (props.year == date.getFullYear().toString()) {
-
-            for (let i = 1; i <= date.getMonth() - 1; i++) {
-                const value = i.toLocaleString('en-US', { minimumIntegerDigits: 2 });
-                element.push(<option key={`m${value}`} value={`m${value}`} >{i}</option>);
-            }
-        } else if (props.year != "") {
+        // if selected year you can a month
+        if (props.year != "") {
 
             for (let i = 1; i <= 12; i++) {
                 const value = i.toLocaleString('en-US', { minimumIntegerDigits: 2 });
@@ -44,10 +37,10 @@ export default function Form(props: Props) {
 
 
     return (
-        <form>
+        <form className="Form">
             <div className="formGroup" key="carTypes">
-                <label>select Vehicle type</label>
-                <select required name="carTypes" value={props.carTypes} onChange={(e) => props.handleChange(e)}>
+                <label>Køretøjstype</label>
+                <select required className="bigBorder" name="carTypes" value={props.carTypes} onChange={(e) => props.handleChange(e)}>
                     <option key="carTypesOp" disabled value=""></option>
                     <option key="4000101002" value="4000101002">Personbiler</option>
                     <option key="4000102001" value="4000102001">Lastbiler </option>
@@ -58,21 +51,24 @@ export default function Form(props: Props) {
             </div>
 
             <div className="formGroup" key="year">
-                <label>select year</label>
-                <select required name="year" value={props.year} onChange={e => props.handleChange(e)} >
+                <label>Årstal</label>
+                <select required className="bigBorder" name="year" value={props.year} onChange={e => props.handleChange(e)} >
                     <option disabled key="yearOp" value=""></option>
                     {yearElement}
                 </select>
             </div>
 
             <div className="formGroup" key="month">
-                <label>select month</label>
-                <select required name="month" value={props.month} onChange={e => props.handleChange(e)} >
+                <label>Måned</label>
+                <select required className="bigBorder" name="month" value={props.month} onChange={e => props.handleChange(e)} >
                     <option disabled key="monthOp" value=""></option>
                     {monthElement}
                 </select>
             </div>
-            <button type="button" name="reset" onClick={e => props.handleChange(e)} >reset</button>
+
+            <div className="formGroup" key="button">
+                <button className="bigBorder" type="button" name="reset" onClick={e => props.handleChange(e)} >Reset</button>
+            </div>
         </form>
     )
 }
