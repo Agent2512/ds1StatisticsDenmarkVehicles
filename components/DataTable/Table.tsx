@@ -46,7 +46,7 @@ export default function Table(props: Props) {
         // adds a element to top row on page 
         Elements.push(<div className="row" key="error">
             <p key="rowTitle">resultat</p>
-            <p className="bigBorder" >no data jet</p>
+            <p className="bigBorder" >ikke noget data</p>
         </div>);
         
     }
