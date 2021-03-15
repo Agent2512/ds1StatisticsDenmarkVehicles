@@ -22,15 +22,8 @@ export default function Form(props: Props) {
         let element: JSX.Element[] = [];
         const date = new Date();
 
-        // if selected year same as current year
-        // elseIf selected year not empty
-        if (props.year == date.getFullYear().toString()) {
-
-            for (let i = 1; i <= date.getMonth() - 1; i++) {
-                const value = i.toLocaleString('en-US', { minimumIntegerDigits: 2 });
-                element.push(<option key={`m${value}`} value={`m${value}`} >{i}</option>);
-            }
-        } else if (props.year != "") {
+        // if selected year you can a month
+        if (props.year != "") {
 
             for (let i = 1; i <= 12; i++) {
                 const value = i.toLocaleString('en-US', { minimumIntegerDigits: 2 });
