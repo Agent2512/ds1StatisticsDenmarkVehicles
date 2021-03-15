@@ -12,3 +12,6 @@ body, #__next {
     display: flex;
     flex-direction: column;
 }
+.bigBorder {
+    border: solid #000 4px;
+}
