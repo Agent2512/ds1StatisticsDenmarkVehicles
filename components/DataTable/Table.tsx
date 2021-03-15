@@ -63,24 +63,26 @@ export default function Table(props: Props) {
         }
 
         // converts values into elements
-        let carTypesElement: JSX.Element[] = [<p></p>];
+        let carTypesElement: JSX.Element[] = [<p key="empty" ></p>];
         Object.keys(carTypes).forEach(i => {
-            carTypesElement.push(<p>{carTypes[i]}</p>)
+            carTypesElement.push(<p key={carTypes[i]} >{carTypes[i]}</p>)
         })
 
         let yearMonthElement: JSX.Element[] = [];
         Object.keys(yearMonth).forEach(i => {
-            const date:string = yearMonth[i].replace("M","/")
-            yearMonthElement.push(<p>{date}</p>)
+            const date: string = yearMonth[i].replace("M", "/")
+            yearMonthElement.push(<p key={i} >{date}</p>)
         })
 
         let valuesElement: JSX.Element[] = [];
         values.forEach(i => {
-            valuesElement.push(<p >{i}</p>)
+            valuesElement.push(<p key={i} >{i}</p>)
         })
 
         // adds a element to top row on page 
-        Elements.push(<div style={style.row} className="row">{carTypesElement}</div>);
+        Elements.push(<div style={style.row} className="row" key="topRow">
+            {carTypesElement}
+        </div>);
 
         // makes all data rows 
         for (let i = 0; i < yearMonthElement.length; i++) {
@@ -89,20 +91,22 @@ export default function Table(props: Props) {
 
             // makes each column and adds to dataRow
             for (let j = 0; j < valuesElement.length / yearMonthLen; j++) {
-                dataRow.push(valuesElement[j*yearMonthLen+i]);
+                dataRow.push(valuesElement[j * yearMonthLen + i]);
             }
 
             // adds dataRows to Elements 
-            Elements.push(<div style={style.row} className="row">{dataRow}</div>);
+            Elements.push(<div style={style.row} className="row" key={`row${i}`} >
+                {dataRow}
+            </div>);
         }
     };
-    
+
     return (
-        <div className="table" >
+        <div className="table" key="table">
             {Elements}
         </div>
     )
-    
+
     // gets data from api with payload
     function getData(payLoad: object) {
         return fetch('https://api.statbank.dk/v1/data', {
