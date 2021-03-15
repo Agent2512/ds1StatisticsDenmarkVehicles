@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import { DataTable } from "../components/DataTable/DataTable";
-import {Header} from "../components/Header"
 
 interface Props {
 
@@ -19,7 +18,6 @@ export default class IndexPage extends Component<Props, State> {
   render() {
     return (
       <main id="index">
-        <Header type="main" title="Statistics Denmark Vehicles"/>
         <DataTable/>
       </main>
     )
