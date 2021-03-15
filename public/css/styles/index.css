@@ -1,0 +1,45 @@
+/* page */
+#index {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: auto 60% auto;
+    grid-template-rows: 10% 10%;
+}
+/* Form */
+#index > .Form {
+    grid-column: 2;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+#index > .Form > .formGroup {
+    width: 75%;
+    height: fit-content;
+
+    margin: auto;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+#index > .Form > .formGroup > button {
+    grid-row: 2;
+}
+/* Table */
+#index > .Table {
+    grid-column: 2;
+    grid-row: 2;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+#index > .Table .row {
+    width: 75%;
+    height: fit-content;
+    margin: auto;
+}
+#index > .Table .row > p {
+    margin: 1px;
+}
